@@ -1,0 +1,24 @@
+{
+  "name": "back_peliculas",
+  "version": "1.0.0",
+  "description": "API REST Administrador de peliculas  IUD ",
+  "keywords": [
+    "peliculas",
+    "iudigital"
+  ],
+  "license": "ISC",
+  "author": "Juan Patiño,Jhon Herrera,Stiven Palomeque, IUDigital de Antioquia",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "express-fileupload": "^1.5.2",
+    "mongoose": "^8.18.1",
+    "uuid": "^13.0.0"
+  }
+}
