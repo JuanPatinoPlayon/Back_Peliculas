@@ -1,25 +1,23 @@
-const { version } = require('mongoose');
+// Importa el framework Express
+const express = require('express');
+const { mongoConn } = require('./database/configuration');
 
-// importa el framework express
-const express = require('express')
+// Conectar a Mongo
+mongoConn();
 
-//crea una instancia de aplicacion  express
-const app = express()
+// Crear instancia de Express
+const app = express();
 
-//Middleware para que Expres pueda entender JSON en las peticiones POST
-app.use(express.json())
+// Middleware para que Express procese JSON
+app.use(express.json());
 
-//Asignación del puerto 
-app.set('port', process.env.PORT || 3000)
-
-//Definición de endpoints
+// --- DEFINICIÓN DE ENDPOINTS ---
 app.get('/', (req, res) => {
-    //Respuesta en formato JSON
-    res.json({ message: 'OK',version :'1.0.0' })
-
+  res.json({
+    mensaje: '¡OK!',
+    version: '1.0.0'
+  });
 });
 
-//Iniciar el servidor para que escuche las peticiones en el puerto asignado
-app.listen(app.get('port'), () => console.log(`Arranco el puerto ${app.get('port')}`))
-
-//texto cambio 
+// Exportar la app configurada
+module.exports = app;
