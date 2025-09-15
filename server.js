@@ -1,6 +1,10 @@
-const app = require('./app')
+require('dotenv').config();
+const app = require('./app');
 
 // Asignación del puerto
-app.set('port', process.env.PORT || 3000)
+const PORT = process.env.PORT || 3000;
 
-app.listen(app.get('port'), () =>  console.log(`Arrancó por el puerto ${app.get('port')}`));
+// Arrancar servidor
+app.listen(PORT, () => {
+  console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
+});
