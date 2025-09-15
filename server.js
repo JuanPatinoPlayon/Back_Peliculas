@@ -1,10 +1,9 @@
-require('dotenv').config();
-const app = require('./app');
+// server.js
+require('dotenv').config(); // 👈 Cargar variables de entorno primero
+
+const app = require('./app')
 
 // Asignación del puerto
-const PORT = process.env.PORT || 3000;
+app.set('port', process.env.PORT || 3000)
 
-// Arrancar servidor
-app.listen(PORT, () => {
-  console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
-});
+app.listen(app.get('port'), () =>  console.log(`Arrancó por el puerto ${app.get('port')}`));
