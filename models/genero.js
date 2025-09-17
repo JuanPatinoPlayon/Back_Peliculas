@@ -7,7 +7,7 @@ const GeneroSchema=Schema({
         required: [true,'El nombre es obligatorio'],  
         unique: true
     },
-   estaso:{
+   estado:{
         type: Boolean,
         default: true,
         required: true,
@@ -15,11 +15,11 @@ const GeneroSchema=Schema({
    },
    fechaCreacion:{
         type: Date,
-        defoult: new Date(),
+        default: Date.now,
    },
    fechaActualizacion:{
         type: Date, 
-        defoult: new Date(),
+        default: Date.now,
 
    },
    descripcion:{
@@ -27,4 +27,9 @@ const GeneroSchema=Schema({
    }
 
 })
+
+GeneroSchema.pre('save', function(next) {
+    this.fechaActualizacion = Date.now();
+    next();
+});
 module.exports=model('Genero', GeneroSchema);
