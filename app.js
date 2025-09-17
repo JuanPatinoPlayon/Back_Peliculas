@@ -12,6 +12,14 @@ const app = express();
 app.use(express.json());
 
 // --- DEFINICIÓN DE ENDPOINTS ---
+const generos=require('./routes/generoRoute');
+const directores=require('./routes/directorRoute');
+
+
+app.use('/generos',generos)
+app.use('/directores',directores)
+
+
 app.get('/', (req, res) => {
   res.json({
     mensaje: '¡OK!',
