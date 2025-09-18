@@ -6,6 +6,9 @@ const {
     deleteGenero 
 } = require('../controllers/generoController')
 
+const express = require('express');
+const router = express.Router();
+
 // Crear un nuevo género
 router.post('/', createGenero);
 
