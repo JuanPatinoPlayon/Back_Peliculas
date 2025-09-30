@@ -33,3 +33,7 @@ GeneroSchema.pre('save', function(next) {
     next();
 });
 module.exports=model('Genero', GeneroSchema);
+
+/**
+ * summary: Crea un nuevo género de película o serie
+ */
