@@ -1,5 +1,6 @@
 // Importa el framework Express
 const express = require('express');
+const cors = require('cors'); // <-- Agrega esta línea
 const { mongoConn } = require('./database/configuration');
 
 // Conectar a Mongo
@@ -8,6 +9,7 @@ mongoConn();
 // Crear instancia de Express
 const app = express();
 
+app.use(cors()); // <-- Agrega esta línea
 // Middleware para que Express procese JSON
 app.use(express.json());
 
