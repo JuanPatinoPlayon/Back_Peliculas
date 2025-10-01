@@ -75,6 +75,40 @@ router.post(
 );
 
 // Actualizar un género por ID
+/**
+ * @swagger
+ * /generos/{id}:
+ *   put:
+ *     summary: Actualiza un género por ID
+ *     tags:
+ *       - Géneros
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID del género a actualizar
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Genero'
+ *     responses:
+ *       200:
+ *         description: Género actualizado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Genero'
+ *       400:
+ *         description: Error de validación
+ *       404:
+ *         description: Género no encontrado
+ *       500:
+ *         description: Error interno del servidor
+ */
 router.put(
   '/:id',
   [
@@ -83,6 +117,7 @@ router.put(
   ],
   updateGenero
 );
+
 
 // Obtener todos los géneros
 /**
