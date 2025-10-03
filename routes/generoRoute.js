@@ -69,6 +69,7 @@ router.post(
   '/',
   [
     body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
+    body('descripcion').notEmpty().withMessage('La descripción es obligatoria'),
     validarCampos
   ],
   createGenero
