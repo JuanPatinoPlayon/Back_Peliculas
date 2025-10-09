@@ -93,7 +93,41 @@ router.post(
  *                   type: string
  *                   example: "Error inesperado."
  */
-// Update a director by ID
+// Actualizar un director por ID
+/**
+ * @swagger
+ * /directores/{id}:
+ *   put:
+ *     summary: Actualiza un director por ID
+ *     tags:
+ *       - Directores
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID del director a actualizar
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Director'
+ *     responses:
+ *       200:
+ *         description: Director actualizado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Director'
+ *       400:
+ *         description: Error de validación
+ *       404:
+ *         description: Director no encontrado
+ *       500:
+ *         description: Error interno del servidor
+ */
 router.put(
   '/:id',
   [
@@ -102,6 +136,7 @@ router.put(
   ],
   updateDirector
 );
+
 
 // Get all directors
 router.get('/', getDirectors);

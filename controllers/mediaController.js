@@ -11,19 +11,6 @@ const createMedia = async (req, res) => {
   }
 };
 
-// Obtener todas las medias
-const getMedias = async (req, res) => {
-  try {
-    const medias = await Media.find()
-      .populate('generos_id')
-      .populate('directores_id')
-      .populate('productoras_id')
-      .populate('tipos_id');
-    res.json(medias);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
 
 // Obtener una media por ID
 const getMediaById = async (req, res) => {
@@ -65,11 +52,32 @@ const deleteMedia = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+// Obtener todas las medias o filtrar por título
+const getMedias = async (req, res) => {
+  try {
+    const { search } = req.query;
+
+    const filtro = search
+      ? { titulo: { $regex: search, $options: "i" } } // búsqueda insensible a mayúsculas
+      : {};
+
+    const medias = await Media.find(filtro)
+      .populate('generos_id')
+      .populate('directores_id')
+      .populate('productoras_id')
+      .populate('tipos_id');
+
+    res.json(medias);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 
 module.exports = {
   createMedia,
   getMedias,
   getMediaById,
   updateMedia,
-  deleteMedia
+  deleteMedia,
 }
